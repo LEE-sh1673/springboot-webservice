@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+group 'me.lee_sh1673.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+// 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지를 정한다.
+repositories {
+    // 	가장 많이 사용되는 저장소, 단 본인이 만든 라이브러리를 업로드하기 위해서는 많은 과정과 설정이 필요하다.
+    mavenCentral()
+}
+
+// 프로젝트 개발에 필요한 의존성들을 선언하는 부분
+/** 참고:
+  * https://docs.gradle.org/current/userguide/building_java_projects.html#sec:java_dependency_management_overview
+  * https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management
+ */
+/**
+ * compileOnly — for dependencies that are necessary to compile your production code but shouldn’t be part of the runtime classpath
+ * implementation (supersedes compile) — used for compilation and runtime, Implementation only dependencies.
+ * runtimeOnly (supersedes runtime) — only used at runtime, not for compilation
+ * compileOnly —  Compile time only dependencies, not used at runtime.
+ * testCompileOnly — same as `compileOnly` except it’s for the tests.
+ * testImplementation — test equivalent of `implementation`
+ * testRuntimeOnly — test equivalent of `runtimeOnly`
+ */
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+// Runs the unit tests using JUnit or TestNG.
+test {
+    // Discover and execute JUnit Platform-based tests
+    useJUnitPlatform()
+}

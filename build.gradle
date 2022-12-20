@@ -6,7 +6,7 @@ plugins {
 
 group 'me.lee_sh1673.book'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 1.9
+sourceCompatibility = 1.8
 
 // 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지를 정한다.
 repositories {
@@ -29,8 +29,12 @@ repositories {
  * testRuntimeOnly — test equivalent of `runtimeOnly`
  */
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // spring-boot
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // lombok
+    implementation('org.projectlombok:lombok')
 }
 
 // Runs the unit tests using JUnit or TestNG.
@@ -38,4 +42,3 @@ test {
     // Discover and execute JUnit Platform-based tests
     useJUnitPlatform()
 }
-targetCompatibility = JavaVersion.VERSION_1_9

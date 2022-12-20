@@ -52,7 +52,12 @@ public class PasswordStrengthMeter {
     }
 
     private static boolean meetsContaining(final String password, final IntPredicate condition) {
-        return password.chars().anyMatch(condition);
+        for (char ch : password.toCharArray()) {
+            if (condition.test(ch)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean meetsWeakCriteria(final int metCounts) {

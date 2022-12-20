@@ -6,7 +6,7 @@ plugins {
 
 group 'me.lee_sh1673.book'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 // 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지를 정한다.
 repositories {
@@ -38,3 +38,4 @@ test {
     // Discover and execute JUnit Platform-based tests
     useJUnitPlatform()
 }
+targetCompatibility = JavaVersion.VERSION_1_9

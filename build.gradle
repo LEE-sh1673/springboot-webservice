@@ -44,6 +44,9 @@ dependencies {
 
     // h2 database (in-memory relational database)
     implementation('com.h2database:h2')
+
+    // mustache
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
 }
 
 // Runs the unit tests using JUnit or TestNG.

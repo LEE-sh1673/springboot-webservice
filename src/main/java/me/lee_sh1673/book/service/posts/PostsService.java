@@ -1,13 +1,16 @@
 package me.lee_sh1673.book.service.posts;
 
-import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import me.lee_sh1673.book.domain.posts.Posts;
 import me.lee_sh1673.book.domain.posts.PostsRepository;
+import me.lee_sh1673.book.web.dto.PostsListResponseDto;
 import me.lee_sh1673.book.web.dto.PostsResponseDto;
 import me.lee_sh1673.book.web.dto.PostsSaveRequestDto;
 import me.lee_sh1673.book.web.dto.PostsUpdateRequestDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -36,5 +39,12 @@ public class PostsService {
                 -> new IllegalArgumentException("해당 개시글이 없습니다. id=" + id));
 
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+            .map(PostsListResponseDto::new)
+            .collect(Collectors.toList());
     }
 }

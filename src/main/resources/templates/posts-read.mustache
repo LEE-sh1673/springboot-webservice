@@ -1,0 +1,22 @@
+{{>layout/header}}
+
+<div class="h-100 d-flex flex-column align-items-center">
+    <div class="col-md-7 mt-5">
+        <div>
+            <h4 class="mb-0">{{post.title}}</h4>
+        </div>
+        <div>
+            <p class="text-muted mt-4 mb-4">{{post.author}}</p>
+        </div>
+        <hr>
+        <div style="white-space: pre-wrap; white-space: -moz-pre-wrap">
+            <p>{{post.content}}</p>
+        </div>
+        <div class="mt-4">
+            <a href="/" role="button" class="btn btn-secondary">목록으로 돌아가기</a>
+            <a href="/posts/update/{{post.id}}" role="button" class="btn btn-primary">게시글 수정</a>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

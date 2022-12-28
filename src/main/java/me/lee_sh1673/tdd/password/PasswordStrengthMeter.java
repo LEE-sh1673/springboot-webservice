@@ -5,19 +5,10 @@ import java.util.function.IntPredicate;
 public class PasswordStrengthMeter {
 
     public PasswordStrength meter(final String password) {
-
         if (meetsInvalidInputCriteria(password)) {
             return PasswordStrength.INVALID;
         }
-        int metCounts = getMetCriteriaCounts(password);
-
-        if (meetsWeakCriteria(metCounts)) {
-            return PasswordStrength.WEAK;
-        }
-        if (meetsNormalCriteria(metCounts)) {
-            return PasswordStrength.NORMAL;
-        }
-        return PasswordStrength.STRONG;
+        return getPasswordStrength(getMetCriteriaCounts(password));
     }
 
     private static boolean meetsInvalidInputCriteria(final String password) {
@@ -39,6 +30,16 @@ public class PasswordStrengthMeter {
         return metCounts;
     }
 
+    private PasswordStrength getPasswordStrength(int metCounts) {
+        if (meetsWeakCriteria(metCounts)) {
+            return PasswordStrength.WEAK;
+        }
+        if (meetsNormalCriteria(metCounts)) {
+            return PasswordStrength.NORMAL;
+        }
+        return PasswordStrength.STRONG;
+    }
+
     private static boolean meetsLengthCriteria(final String password) {
         return password.length() >= 8;
     }
@@ -52,12 +53,7 @@ public class PasswordStrengthMeter {
     }
 
     private static boolean meetsContaining(final String password, final IntPredicate condition) {
-        for (char ch : password.toCharArray()) {
-            if (condition.test(ch)) {
-                return true;
-            }
-        }
-        return false;
+        return password.chars().anyMatch(condition);
     }
 
     private boolean meetsWeakCriteria(final int metCounts) {

@@ -1,6 +1,5 @@
 package me.lee_sh1673.book.web;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import me.lee_sh1673.book.config.auth.dto.SessionUser;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequiredArgsConstructor
 @Controller
@@ -32,14 +29,6 @@ public class IndexController {
         }
         return "index";
     }
-
-    //TODO: Temp code for test authorization.
-    @RequestMapping(value = "/callback", method = RequestMethod.GET)
-    public String GoogleSignCallback(HttpServletRequest request) throws Exception {
-        System.out.println("## Authorization code = " + request.getParameter("code"));
-        return "index";
-    }
-
 
     @GetMapping("/posts/save")
     public String postsSave() {

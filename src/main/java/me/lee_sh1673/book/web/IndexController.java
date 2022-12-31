@@ -1,7 +1,7 @@
 package me.lee_sh1673.book.web;
 
-import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import me.lee_sh1673.book.config.auth.LoginUser;
 import me.lee_sh1673.book.config.auth.dto.SessionUser;
 import me.lee_sh1673.book.service.posts.PostsService;
 import me.lee_sh1673.book.web.dto.PostsResponseDto;
@@ -16,13 +16,9 @@ public class IndexController {
 
     private final PostsService postsService;
 
-    private final HttpSession httpSession;
-
     @GetMapping("/")
-    public String index(final Model model) {
+    public String index(final Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
-
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if (user != null) {
             model.addAttribute("loginName",user.getName());

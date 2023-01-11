@@ -61,6 +61,9 @@ dependencies {
 
     // 스프링 시큐리티 시큐리티 테스트 라이브러리
     testImplementation("org.springframework.security:spring-security-test")
+
+    // Maria DB 드라이버
+    runtimeOnly('org.mariadb.jdbc:mariadb-java-client')
 }
 
 // Runs the unit tests using JUnit or TestNG.

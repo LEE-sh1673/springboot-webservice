@@ -3,27 +3,35 @@
 name: Java CI with Gradle
 
 on:
-  workflow_dispatch:
+  release:
+    types: [push] # (1) push시 자동으로 실행
+  push:
+    branches: [main] # (2) main 브랜치에서 동작
+  workflow_dispatch: # 수동으로도 실행이 가능
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: read 
+      packages: write
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: '11'
+          distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         shell: bash
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew clean build -x test
         shell: bash
         
       - name: Send mail

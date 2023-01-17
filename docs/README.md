@@ -4,6 +4,8 @@
 
 ---
 
+![workflow status](https://github.com/LEE-sh1673/springboot-webservice/actions/workflows/main.yml/badge.svg)
+
 # 교재 기준에서 변경된 점들
 
 - Spring Boot 버전을 `2.4.1`으로 변경.
@@ -192,3 +194,6 @@ spring.datasource.hikari.username=sa
 - [(2020.12.16) 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 최신 코드로 변경하기](https://jojoldu.tistory.com/539)
 - [교재 실습 코드 Github](https://github.com/jojoldu/freelec-springboot2-webservice/tree/version/2020-12-11)
 - [Gradle - Dependency management](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)
+- [Github Actions 실행 후 이메일 보내기](https://www.ravsam.in/blog/send-email-notification-when-github-action-fails/)
+- [P.320 chepter 09 Travis -> Git Hub Action 자동배포](https://github.com/ItsWard/aws-web-service/issues/1)
+- [Github Actions + CodeDeploy + Nginx 로 무중단 배포하기](https://wbluke.tistory.com/39)

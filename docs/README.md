@@ -11,6 +11,9 @@
 - IntelliJ IDEA `2020.3` 버전 사용. (<-> 필자는 `2022.01` 버전을 사용)
 - Junit 버전이 4에서 5로 변경됨.
 - Gradle 버전이 5버전 이후로 여러 가지로 많이 바뀌어 이에 따라 교재의 문법 또한 수정할 사항이 많음. (자세한 내용은 참고 문서의 저자의 블로그 글을 참고)
+- 교재에서 다룬 Travis CI는 2020년에 travis.org라는 도메인을 페쇄하고 travis.com을 이용해야 한다. 책의 저자가 travis.com 혹은 Github Action을 쓸 것을 추천하였기 때문에 Travis CI 대신 Github Action을 사용함.
+
+> 4장 이후의 필기 내용은 README가 아닌 노션에 정리함.
 
 ## 현재 설정
 
